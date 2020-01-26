@@ -16,7 +16,8 @@
   font-weight: 800; }
 
 .bpmslider_range {
-  width: 100%; }
+  width: 100%;
+  cursor: pointer; }
 
 .metronome_btn {
   background: #c94d46;
