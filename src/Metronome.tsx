@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Metronome.module.css';
 
+const initialBeats = {
+  bpm: 120,
+  playing: false,
+  count: 0,
+  beatsPerMeasure: 4,
+
+}
+
+
 const Metronome = () => {
-  let bpm = 120;
-  let playing = false;
+
+  const [beat, setBeat] = useState(initialBeats)
 
   return (
     <div className={styles.metronome}>
       <div className={styles.bpmslider}>
-        <span className={styles.bpmslider_display}>Bpm {bpm}</span>
-        <input type='range' min='60' max='180' value={bpm} className={styles.bpmslider_range}/>
+        <span className={styles.bpmslider_display}>Bpm {beat.bpm}</span>
+        <input type='range' min='60' max='180' value={beat.bpm} className={styles.bpmslider_range}/>
       </div>
-      <button className={styles.metronome_btn}>{playing ? 'Stop' : 'Play'}</button>
+      <button className={styles.metronome_btn}>{beat.playing ? 'Stop' : 'Play'}</button>
     </div>
   );
 }
