@@ -12,7 +12,8 @@ const initialBeats = {
 
 const Metronome = () => {
 
-  const [beat, setBeat] = useState(initialBeats)
+  const [beat, setBeat] = useState(initialBeats);
+  const [timer, setTimer] = useState();
 
   const tick = new Audio(click1)
   const tock = new Audio(click2)
@@ -22,7 +23,27 @@ const Metronome = () => {
     setBeat({ ...beat, bpm: bpms })
   }
 
+  const playClick = () => {
+    console.log('click')
+  }
 
+  const startStop = function() {
+    // if not playing - start playing in intervals acc. to BPM...;)
+    if (!beat.isPlaying) {
+      setTimer(setInterval(playClick, (60 / beat.bpm) * 1000))
+      setBeat({
+        ...beat,
+        count: 0,
+        isPlaying: true
+      })
+    } else {
+      clearInterval(timer);
+      setBeat({
+        ...beat,
+        isPlaying: false
+      })
+    }
+  }
 
 
   return (
@@ -31,7 +52,7 @@ const Metronome = () => {
         <span className={styles.bpmslider_display}>Bpm {beat.bpm}</span>
         <input type='range' min='60' max='180' value={beat.bpm} onChange={handleBpmChange} className={styles.bpmslider_range} />
       </div>
-      <button onClick={()=>{tick.play()}} className={styles.metronome_btn}>{beat.isPlaying ? 'Stop' : 'Play'}</button>
+      <button onClick={() => { startStop()}} className={styles.metronome_btn}>{beat.isPlaying ? 'Stop' : 'Play'}</button>
     </div>
   );
 }
