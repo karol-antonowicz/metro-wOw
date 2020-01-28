@@ -1,3 +1,6 @@
+** Attempt to flip [Dave Ceddia's](https://daveceddia.com/) metronome using React Hooks and Typescript
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
