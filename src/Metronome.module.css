@@ -1,3 +1,23 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.info {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 0.6em; }
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffb00;
+  margin: 0;
+  padding: 0; }
+
 .metronome {
   text-align: center;
   max-width: 375px;
@@ -8,12 +28,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 2vh; }
 
 .bpmslider_display {
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
-  font-weight: 800; }
+  font-weight: 800;
+  margin-bottom: 1vh;
+  font-size: 1.4em; }
 
 .bpmslider_range {
   width: 100%;
@@ -26,6 +49,10 @@
   border-radius: 2px;
   width: 100px;
   color: #fff;
-  font-size: 18px; }
+  font-size: 18px;
+  cursor: pointer; }
+  .metronome_btn:hover {
+    background-color: white;
+    color: #c94d46; }
 
 /*# sourceMappingURL=Metronome.module.css.map */
