@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Metronome.module.css';
 const click1 = require('./sounds/click1.wav')
+const click2 = require('./sounds/click2.wav')
 
 const initialBeats = {
   bpm: 120,
@@ -15,6 +16,7 @@ const Metronome = () => {
   const [timer, setTimer] = useState();
 
   const tick = new Audio(click1)
+  const tock = new Audio(click2)
 
   const handleBpmChange = (e: any) => {
     const bpms = e.target.value;
@@ -24,12 +26,16 @@ const Metronome = () => {
       setTimer(setInterval(playClick, (60 / beat.bpm) * 1000))
       // set the new bpm and reset the beat counter
     }
-    setBeat({ ...beat, bpm: parseInt(bpms) })
+    setBeat({ ...beat, bpm: parseInt(bpms), count:0 })
   }
 
   const playClick = () => {
+    if (beat.count%beat.beatsPerMeasure==0) {
+      tock.play()
+    } else {
     tick.play()
-
+    }
+    setBeat(prevBeat=> { return { ...prevBeat, count: prevBeat.count+1 }});
   }
 
   const startStop = function () {
